@@ -1,0 +1,14 @@
+.tools/
+.venv/
+.build/
+dist/
+analysis/
+savedata/
+__pycache__/
+*.py[cod]
+*.exe
+*.dll
+*.pfs
+*.pfs.*
+pc/
+image*.png
