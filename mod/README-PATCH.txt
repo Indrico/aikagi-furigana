@@ -1,35 +1,36 @@
-FURIGANA TOGGLE — AIKAGI / ARTEMIS
+FURIGANA TOGGLE - AIKAGI / ARTEMIS
 
-Ini patch awal. Pengujian Lua dan integritas arsip lulus (11 tes).
-Tampilan di game belum terverifikasi: lingkungan pengujian tidak memiliki
-klien Steam yang diperlukan executable asli.
+Lua and archive integrity checks have passed (11 tests).
+In-game appearance has not been verified: the test environment does not have
+the Steam client required by the original executable.
 
-PAKET HASIL BUILD LOKAL
-Paket ini dibuat dari berkas game pengguna, bukan untuk disertakan dalam release.
-Untuk source release publik, ikuti README.md dan installer di folder utama.
+LOCAL BUILD OUTPUT
+This package is generated locally from your own game files. It is not included
+in the public release. For the public source release, follow README.md and use
+the installer in the project's main folder.
 
-WINDOWS
-1. Tutup game.
-2. Ekstrak seluruh isi folder furigana_patch ke folder yang berisi Aikagi_en.exe.
-   Boleh juga membiarkannya sebagai subfolder furigana_patch di folder game.
-   Sertakan folder payload, pc, dan build-report.json; jangan salin file .ps1 saja.
-3. Jalankan Install-Furigana.cmd.
-4. Buka game melalui Steam, pilih bahasa Japanese, lalu mulai/lanjutkan cerita.
-5. Klik "Furigana: OFF / ON" di kiri bawah kotak dialog.
+INSTALLATION
+1. Close the game.
+2. Keep the generated package separate from the game's original archive.
+   Include the button images in pc and the build-report.json file.
+3. From this package's folder, open PowerShell and run:
+     .\Install-Furigana.ps1 -GameDirectory "C:\path\to\Aikagi"
+   If this package is directly inside the game folder, Install-Furigana.cmd
+   can detect the game directory automatically.
+4. Launch the game through Steam, select Japanese, and start or resume a story.
+5. Click "Furigana: OFF / ON" at the bottom left of the dialogue box.
 
-Untuk lokasi game lain, buka PowerShell dan jalankan:
-  .\Install-Furigana.ps1 -GameDirectory "C:\lokasi\Aikagi"
+RESTORE
+Close the game and run:
+  .\Install-Furigana.ps1 -GameDirectory "C:\path\to\Aikagi" -Restore
+The original archive is saved as Aikagi_en.pfs.before-furigana.
+Save data is not modified. Unsupported archive versions are rejected.
+Automatic directory detection uses the installer's location, not PowerShell's
+working directory. The installer was tested with PowerShell on Linux; it has
+not been run on Windows by the developer.
 
-PEMULIHAN
-Tutup game dan jalankan Restore-Furigana.cmd.
-Arsip asli disimpan sebagai Aikagi_en.pfs.before-furigana.
-Save data tidak diubah. Installer menolak versi arsip yang berbeda.
-Folder game dideteksi dari lokasi installer, bukan folder kerja PowerShell.
-File patch ada di payload agar ekstraksi tidak menimpa arsip game asli.
-Installer diperiksa dengan PowerShell di Linux; belum dijalankan di Windows.
-
-CATATAN
-Furigana mengikuti kata/okurigana; gabungan kanji tertentu memakai ruby kelompok.
-Nama tokoh memiliki koreksi khusus. Pembacaan otomatis masih dapat keliru.
-Periksa posisi tombol, jarak antarbaris, backlog, dan save/load di game.
-Keadaan awal OFF; pilihan disimpan melalui konfigurasi game.
+NOTES
+Furigana follows words and okurigana; some compounds use grouped ruby.
+Character names have reading overrides. Automatic readings may still be wrong.
+Check button placement, line spacing, backlog rendering, and save/load in-game.
+The default is OFF. Your preference is saved through the game's configuration.
